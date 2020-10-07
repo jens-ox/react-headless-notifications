@@ -1,10 +1,21 @@
 import React from 'react'
 
-import { ExampleComponent } from 'react-headless-notifications'
-import 'react-headless-notifications/dist/index.css'
+import { NotificationProvider } from 'react-headless-notifications'
+import ContainerComponent from './components/ContainerComponent'
+import ExampleComponent from './components/ExampleComponent'
+import NotificationComponent from './components/NotificationComponent'
+
+
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  return <NotificationProvider
+    containerComponent={ContainerComponent}
+    notificationComponent={NotificationComponent}
+    autoDismiss={true}
+    autoDismissTimeout={1000}
+  >
+    <ExampleComponent />
+  </NotificationProvider>
 }
 
 export default App

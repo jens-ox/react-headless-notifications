@@ -1,10 +1,12 @@
-import * as React from 'react'
-import styles from './styles.module.css'
+// base elements
+export {
+  NotificationProvider,
+  useNotifications,
+  withNotificationsManager
+} from './NotificationProvider'
 
-interface Props {
-  text: string
-}
-
-export const ExampleComponent = ({ text }: Props) => {
-  return <div className={styles.test}>Example Component: {text}</div>
-}
+// types
+export { default as ContainerComponentProps } from './types/ContainerComponent'
+export { default as NotificationProps } from './types/Notification'
+export { default as NotificationComponentProps } from './types/NotificationComponent'
+export { default as NotificationType } from './types/NotificationType'
