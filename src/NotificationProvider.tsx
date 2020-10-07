@@ -71,7 +71,10 @@ export const NotificationProvider = ({
     return Boolean(notifications.filter((t) => t.id === id).length)
   }
 
-  const add = (content: Node, options: Options = {}): Id | null => {
+  const add = (
+    content: Node | string = '',
+    options: Options = {}
+  ): Id | null => {
     const id = options.id || generateUEID()
 
     // bail if a notification exists with this ID

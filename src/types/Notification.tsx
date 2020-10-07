@@ -10,6 +10,6 @@ export interface Options {
 
 export default interface Notification extends Options {
   id: string
-  content: Node
+  content: Node | string
   options?: Options
 }
