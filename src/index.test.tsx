@@ -1,7 +1,7 @@
-// import { ExampleComponent } from '.'
+import { NotificationProvider } from '.'
 
-// describe('ExampleComponent', () => {
-//   it('is truthy', () => {
-//     expect(ExampleComponent).toBeTruthy()
-//   })
-// })
+describe('NotificationProvider', () => {
+  it('is truthy', () => {
+    expect(NotificationProvider).toBeTruthy()
+  })
+})
