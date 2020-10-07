@@ -14,7 +14,7 @@ import NotificationComponentProps from './types/NotificationComponent'
 import TransitionState from './types/TransitionState'
 
 type Id = string
-type AddFn = (content: Node | string, options?: Options) => Id | null
+type AddFn = (content?: Node | string, options?: Options) => Id | null
 type UpdateFn = (id: Id, options: Options) => void
 type RemoveFn = (id: Id) => void
 
