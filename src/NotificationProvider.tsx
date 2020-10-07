@@ -172,8 +172,8 @@ export const NotificationConsumer = ({
   <Consumer>{(context) => children(context)}</Consumer>
 )
 
-export const withNotificationsManager = (Comp: ComponentType<any>) =>
-  React.forwardRef((props: any, ref: Ref<any>) => (
+export const withNotificationsManager = (Comp: ComponentType<never>) =>
+  React.forwardRef((props: never, ref: Ref<never>) => (
     <NotificationConsumer>
       {(context) => <Comp notificationManager={context} {...props} ref={ref} />}
     </NotificationConsumer>
