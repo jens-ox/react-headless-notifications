@@ -12,18 +12,41 @@ npm install --save react-headless-notifications
 
 ## Usage
 
+In your `App.tsx`:
 ```tsx
-import React, { Component } from 'react'
+import React from 'react'
 
-import MyComponent from 'react-headless-notifications'
-import 'react-headless-notifications/dist/index.css'
+import { NotificationProvider } from 'react-headless-notifications'
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+const App = () => {
+  return (
+    <NotificationProvider>
+      <MyStuff />
+    </NotificationProvider>
+  )
 }
+
+export default App
 ```
+
+In your `MyStuff.tsx`:
+```tsx
+import React from 'react'
+import { useNotifications } from 'react-headless-notifications'
+
+const MyStuff = () => {
+  const { addNotification } = useNotifications()
+  return (
+    <>
+      <button onClick={() => addNotification('this is an error', { type: 'error'})}>Show error</button>
+    </>
+  )
+}
+
+export default MyStuff
+```
+
+For a full running CRA example, see the `example` directory.
 
 ## License
 
