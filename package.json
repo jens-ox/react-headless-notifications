@@ -1,6 +1,6 @@
 {
   "name": "react-headless-notifications",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Bring-your-own-UI react notification system",
   "author": "jens-ox",
   "license": "MIT",
