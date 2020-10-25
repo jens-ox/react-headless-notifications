@@ -15,14 +15,12 @@ import TransitionState from './types/TransitionState'
 
 type Id = string
 type AddFn = (content?: Node | string, options?: Options) => Id | null
-type UpdateFn = (id: Id, options: Options) => void
 type RemoveFn = (id: Id) => void
 
 interface Context {
   add: AddFn
   remove: RemoveFn
   removeAll: () => void
-  update: UpdateFn
   notifications: Array<Notification>
 }
 
@@ -30,7 +28,6 @@ const NotificationContext = createContext<Context>({
   add: () => '',
   remove: () => null,
   removeAll: () => null,
-  update: () => null,
   notifications: []
 })
 const { Consumer, Provider } = NotificationContext
@@ -99,20 +96,6 @@ export const NotificationProvider = ({
     notifications.forEach((t) => remove(t.id))
   }
 
-  const update = (id: Id, options: Options = {}): void => {
-    // bail if NO notifications exists with this ID
-    if (!has(id)) return
-
-    // update the notifications stack
-    const i = notifications.findIndex((t) => t.id === id)
-    const updatedNotification = { ...notifications[i], ...options }
-    setNotifications([
-      ...notifications.slice(0, i),
-      updatedNotification,
-      ...notifications.slice(i + 1)
-    ])
-  }
-
   const onDismiss = (id: Id) => (): void => {
     console.log('removing: ', id)
     remove(id)
@@ -121,7 +104,7 @@ export const NotificationProvider = ({
   const portalTarget = canUseDOM ? document.body : null
 
   return (
-    <Provider value={{ add, remove, removeAll, update, notifications }}>
+    <Provider value={{ add, remove, removeAll, notifications }}>
       {children}
 
       {portalTarget ? (
@@ -192,7 +175,6 @@ export const useNotifications = () => {
     addNotification: ctx.add,
     removeNotification: ctx.remove,
     removeAllNotifications: ctx.removeAll,
-    updateNotification: ctx.update,
     notificationStack: ctx.notifications
   }
 }
